@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --color-primary: #084B86;
+  --color-primary-light: #0F7CFF;
+  --color-primary-lighter: #9AC8FF;
+  --color-primary-accent: #0060D3;
+  --color-primary-pale: #5EB7F4;
+  --color-primary-muted: rgba(8, 75, 134, 0.22);
+
+  /* Danger Colors */
+  --color-danger: #EE0606;
+  --color-danger-dark: #820000;
+  --color-danger-accent: #FF7A58;
+  --color-danger-light: rgba(255, 122, 88, 0.41);
+  --color-danger-muted: rgba(255, 122, 88, 0.31);
+
+  /* Warning Colors */
+  --color-warning: #FF8000;
+  --color-warning-light: rgba(255, 166, 0, 0.43);
+  --color-warning-subtle: #FFC300;
+  --color-warning-pale: rgba(255, 248, 36, 0.54);
+
+  /* Success Colors */
+  --color-success: #0DBA0D;
+  --color-success-dark: #006200;
+  --color-success-light: #71FF71;
+  --color-success-muted: rgba(13, 186, 13, 0.21);
+
+  /* Surface Colors */
+  --color-surface: #FFFFFF;
+  --color-surface-highlight: #C9D7E4;
+  --color-surface-muted: rgba(184, 184, 184, 0.36);
+  --color-surface-light: #E6E6E6;
+  --color-surface-border: #DDDDDD;
+
+  /* Text Colors */
+  --color-text-primary: #161719;
+  --color-text-secondary: #5F5F5F;
+
+  /* Border Colors */
+  --color-border: #B8B8B8;
+
+  /* Font Families */
+  --font-poppins: 'Poppins', sans-serif;
+  --font-prompt: 'Prompt', sans-serif;
+
+  /* Font Sizes */
+  --text-heading-xl: 30px;
+  --text-heading-lg: 12px;
+  --text-heading-md: 10px;
+  --text-body-lg: 11px;
+  --text-body-md: 7px;
+  --text-body-sm: 6px;
+  --text-body-xs: 5px;
+  --text-body-xxs: 4px;
+  --text-body-xxxs: 3px;
+
+  /* Spacing */
+  --spacing-xs: 3px;
+  --spacing-sm: 6px;
+  --spacing-md: 10px;
+  --spacing-lg: 15px;
+  --spacing-xl: 25px;
+  --spacing-2xl: 35px;
+
+  /* Border Radius */
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 7px;
+  --radius-pill: 66px;
+
+  /* Shadows */
+  --shadow-sm: 1px 1px 2px rgba(0, 0, 0, 0.14);
+  --shadow-md: 2px 2px 2px rgba(0, 0, 0, 0.14);
+
+  /* Gradients */
+  --gradient-header: linear-gradient(81.48deg, #084B86 70.195%, #0F7CFF 106.04%);
+  --gradient-progress: linear-gradient(to right, #0F7CFF, #9AC8FF);
+  --gradient-success: linear-gradient(to right, #0DBA0D, #71FF71);
+  --gradient-danger: linear-gradient(to right, #EE0606, #FF7A58);
+  --gradient-timeline: linear-gradient(to right, #5EB7F4 11.538%, #B8B8B8 28.68%);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-poppins);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-surface);
+  }
+}
+
+@layer components {
+  .card {
+    @apply border border-border rounded-lg bg-surface;
+  }
+
+  .section-title {
+    @apply font-poppins font-semibold text-heading-md text-primary;
+  }
+
+  .section-subtitle {
+    @apply font-poppins font-light text-body-sm text-text-secondary;
+  }
+
+  .ai-evidence {
+    @apply font-poppins text-body-xxxs text-primary;
+  }
+
+  .ai-evidence-label {
+    @apply font-bold;
+  }
+
+  .risk-badge {
+    @apply inline-flex items-center justify-center px-2 py-0.5 rounded-md text-body-xs font-prompt;
+  }
+
+  .risk-badge-critical {
+    @apply bg-danger-light text-danger;
+  }
+
+  .risk-badge-high {
+    @apply bg-warning-light text-warning;
+  }
+
+  .risk-badge-medium {
+    @apply bg-warning-pale text-warning-subtle;
+  }
+
+  .risk-badge-low {
+    @apply bg-success-muted text-success;
+  }
+
+  .progress-bar {
+    @apply h-3 rounded-md shadow-md;
+  }
+
+  .progress-bar-fill {
+    @apply bg-gradient-progress h-full;
+  }
+
+  .metric-label {
+    @apply font-prompt text-body-xs text-text-primary;
+  }
+
+  .metric-value {
+    @apply font-prompt font-semibold text-body-md text-primary;
+  }
+
+  .metric-description {
+    @apply font-prompt text-body-xs text-text-secondary;
+  }
+}
+
+@layer utilities {
+  .text-gradient-header {
+    background: var(--gradient-header);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
