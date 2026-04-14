@@ -8,7 +8,7 @@ export function PageWrapper({ children, className = '' }) {
 
 export function PageContent({ children, className = '' }) {
   return (
-    <main className={`px-4 py-4 ${className}`}>
+    <main className={`w-[95%] md:w-[90%] mx-auto py-4 ${className}`}>
       {children}
     </main>
   );

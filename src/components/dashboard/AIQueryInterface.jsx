@@ -1,8 +1,11 @@
 import { Mic } from 'lucide-react';
+import { useState } from 'react';
 
 export function AIQueryInterface({
   query = "Why is the forecasted cash down despite an increase in charges?",
 }) {
+  const [queryText, setQueryText] = useState('');
+
   return (
     <div 
       className="rounded-lg shadow-md overflow-hidden"
@@ -20,9 +23,14 @@ export function AIQueryInterface({
             boxShadow: '0.5px 0.5px 1px rgba(0, 0, 0, 0.25)',
           }}
         >
-          <span className="flex-1 font-poppins text-sm md:text-base text-text-primary leading-tight">
-            {query}
-          </span>
+          <input
+            type="text"
+            value={queryText}
+            onChange={(event) => setQueryText(event.target.value)}
+            className="flex-1 bg-transparent outline-none font-poppins text-xs md:text-sm text-text-primary leading-tight placeholder:text-text-primary/70"
+            placeholder={query}
+            aria-label="AI query input"
+          />
           <button 
             className="p-2 rounded-md hover:bg-white/20 transition-colors cursor-pointer"
             aria-label="Voice input"
@@ -34,7 +42,7 @@ export function AIQueryInterface({
 
       {/* Response Area */}
       <div className="mx-3 mb-3 bg-white rounded-lg p-4 min-h-[140px]">
-        <div className="font-poppins text-sm md:text-base text-text-secondary leading-relaxed space-y-3">
+        <div className="font-poppins text-xs md:text-sm text-text-secondary leading-relaxed space-y-3">
           <p>
             Forecasted cash is down by $660,000 despite a $420,000 increase in charges due to three primary factors impacting cash realization:
           </p>

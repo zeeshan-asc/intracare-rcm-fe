@@ -83,14 +83,14 @@ function EntityCard({ entity, showLogo = true }) {
   const trendColor = entity.trend.direction === 'up' ? 'text-success' : 'text-danger';
 
   return (
-    <div className="bg-primary-muted rounded-lg p-4 mb-3">
+    <div className="bg-primary-muted rounded-lg p-3 mb-3">
       {/* Header */}
       <div className="flex items-start justify-between mb-2">
         <div className="flex items-center gap-2">
           {showLogo && entity.logo ? (
-            <img src={entity.logo} alt={entity.name} className="h-5 w-auto object-contain" />
+            <img src={entity.logo} alt={entity.name} className="h-4 w-auto object-contain" />
           ) : (
-            <span className="font-poppins font-semibold text-base text-primary">{entity.name}</span>
+            <span className="font-poppins font-semibold text-sm text-primary">{entity.name}</span>
           )}
           <span className="font-poppins text-xs text-text-secondary">{entity.type}</span>
         </div>
@@ -109,17 +109,17 @@ function EntityCard({ entity, showLogo = true }) {
               style={{ width: `${entity.progress}%` }}
             />
           </div>
-          <span className="font-poppins font-semibold text-base text-primary">{entity.contribution}</span>
+          <span className="font-poppins font-semibold text-sm text-primary">{entity.contribution}</span>
         </div>
       </div>
 
       {/* Pattern */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
         <p className="font-poppins text-xs text-text-secondary">
           <span className="font-semibold text-primary">Pattern:</span> {entity.pattern}
         </p>
         <div className="flex items-center gap-1">
-          <TrendIcon size={14} className={trendColor} />
+          <TrendIcon size={12} className={trendColor} />
           <span className={`font-poppins text-xs font-semibold ${trendColor}`}>{entity.trend.value}</span>
           <span className="font-poppins text-xs text-text-secondary">{entity.trend.label}</span>
         </div>
@@ -134,12 +134,12 @@ function ProviderCard({ provider }) {
   const trendColor = provider.trend.direction === 'up' ? 'text-success' : 'text-danger';
 
   return (
-    <div className="bg-primary-muted rounded-lg p-4">
+    <div className="bg-primary-muted rounded-lg p-3">
       {/* Header */}
       <div className="flex items-start justify-between mb-2">
         <div>
           <div className="flex items-center gap-2">
-            <span className="font-poppins font-semibold text-base text-primary">{provider.name}</span>
+            <span className="font-poppins font-semibold text-sm text-primary">{provider.name}</span>
             <span className="font-poppins text-xs text-text-secondary">{provider.type}</span>
           </div>
           <p className="font-poppins text-xs text-text-secondary">Cash Contribution</p>
@@ -148,7 +148,7 @@ function ProviderCard({ provider }) {
           <span className={`px-2.5 py-1 rounded-full text-xs font-prompt font-medium ${risk.bgColor} ${risk.textColor}`}>
             {risk.label}
           </span>
-          <p className="font-poppins font-semibold text-base text-primary mt-1">{provider.contribution}</p>
+          <p className="font-poppins font-semibold text-sm text-primary mt-1">{provider.contribution}</p>
         </div>
       </div>
 
@@ -161,12 +161,12 @@ function ProviderCard({ provider }) {
       </div>
 
       {/* Pattern & Trend */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
         <p className="font-poppins text-xs text-text-secondary">
           <span className="font-semibold text-primary">Pattern:</span> {provider.pattern}
         </p>
         <div className="flex items-center gap-1">
-          <TrendIcon size={14} className={trendColor} />
+          <TrendIcon size={12} className={trendColor} />
           <span className={`font-poppins text-xs font-semibold ${trendColor}`}>{provider.trend.value}</span>
           <span className="font-poppins text-xs text-text-secondary">{provider.trend.label}</span>
         </div>
@@ -177,19 +177,19 @@ function ProviderCard({ provider }) {
 
 export function EntityContributionIntelligence() {
   return (
-    <div className="border border-border rounded-xl p-5 md:p-6">
+    <div className="border border-border rounded-xl p-4 md:p-5">
       {/* Header */}
-      <div className="mb-5">
-        <h3 className="font-poppins font-semibold text-xl lg:text-2xl text-primary leading-normal">
+      <div className="mb-3">
+        <h3 className="font-poppins font-semibold text-base md:text-lg text-primary leading-normal">
           Entity Contribution Intelligence
         </h3>
-        <p className="font-poppins font-light text-sm text-text-secondary leading-normal">
+        <p className="font-poppins font-light text-xs md:text-sm text-text-secondary leading-normal">
           Ranked contribution to future cash flow-payers, clinic, and providers
         </p>
       </div>
 
       {/* Summary Metrics */}
-      <div className="bg-danger-muted/40 rounded-xl p-4 mb-5 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+      <div className="bg-danger-muted/40 rounded-xl p-4 mb-4 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
         {summaryMetrics.map((metric, index) => (
           <div key={index} className="text-center">
             <p className="font-poppins text-xs text-text-secondary">{metric.label}</p>
@@ -198,7 +198,7 @@ export function EntityContributionIntelligence() {
                 <img src={metric.logo} alt={metric.value} className="h-5 w-auto object-contain" />
               </div>
             ) : (
-              <p className={`font-poppins font-bold text-2xl ${metric.valueColor || 'text-primary'}`}>
+              <p className={`font-poppins font-bold text-xl ${metric.valueColor || 'text-primary'}`}>
                 {metric.value}
               </p>
             )}
@@ -208,12 +208,12 @@ export function EntityContributionIntelligence() {
       </div>
 
       {/* Payer & Clinic Rankings */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         {/* Payer Ranking */}
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <Wallet size={18} className="text-primary" />
-            <h4 className="font-poppins font-semibold text-lg text-primary">Payer Ranking</h4>
+            <Wallet size={16} className="text-primary" />
+            <h4 className="font-poppins font-semibold text-sm text-primary">Payer Ranking</h4>
           </div>
           {payerRankings.map((payer, index) => (
             <EntityCard key={index} entity={payer} showLogo={true} />
@@ -223,8 +223,8 @@ export function EntityContributionIntelligence() {
         {/* Clinic Ranking */}
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <Building2 size={18} className="text-primary" />
-            <h4 className="font-poppins font-semibold text-lg text-primary">Clinic Ranking</h4>
+            <Building2 size={16} className="text-primary" />
+            <h4 className="font-poppins font-semibold text-sm text-primary">Clinic Ranking</h4>
           </div>
           {clinicRankings.map((clinic, index) => (
             <EntityCard key={index} entity={clinic} showLogo={false} />
@@ -233,10 +233,10 @@ export function EntityContributionIntelligence() {
       </div>
 
       {/* Rendering Provider Ranking */}
-      <div className="mb-5">
+      <div className="mb-4">
         <div className="flex items-center gap-2 mb-3">
-          <User size={18} className="text-primary" />
-          <h4 className="font-poppins font-semibold text-lg text-primary">Rendering Provider Ranking</h4>
+          <User size={16} className="text-primary" />
+          <h4 className="font-poppins font-semibold text-sm text-primary">Rendering Provider Ranking</h4>
         </div>
         {providerRankings.map((provider, index) => (
           <ProviderCard key={index} provider={provider} />
@@ -245,7 +245,7 @@ export function EntityContributionIntelligence() {
 
       {/* Concentration & Risk Analysis */}
       <div className="bg-surface-muted rounded-xl p-4">
-        <h4 className="font-poppins font-semibold text-lg text-primary mb-4">
+        <h4 className="font-poppins font-semibold text-sm text-primary mb-4">
           Concentration & Risk Analysis
         </h4>
 
@@ -254,11 +254,11 @@ export function EntityContributionIntelligence() {
           <p className="font-poppins text-sm text-text-primary mb-2">Top Contributor Concentration</p>
           <div className="space-y-2">
             {concentrationData.map((item, index) => (
-              <div key={index} className="flex items-center gap-3">
+              <div key={index} className="flex items-center gap-2 sm:gap-3">
                 {item.logo ? (
                   <img src={item.logo} alt={item.name} className="h-4 w-20 object-contain object-left" />
                 ) : (
-                  <span className="font-poppins text-xs text-text-primary w-20">{item.name}</span>
+                  <span className="font-poppins text-xs text-text-primary w-16 sm:w-20">{item.name}</span>
                 )}
                 <div className="flex-1 h-2 bg-surface-border rounded-full overflow-hidden">
                   <div
@@ -266,7 +266,7 @@ export function EntityContributionIntelligence() {
                     style={{ width: `${item.progress * 3}%` }}
                   />
                 </div>
-                <span className="font-poppins text-sm text-text-primary w-14 text-right">{item.value}</span>
+                <span className="font-poppins text-sm text-text-primary w-12 sm:w-14 text-right">{item.value}</span>
               </div>
             ))}
           </div>
@@ -275,7 +275,7 @@ export function EntityContributionIntelligence() {
         {/* Risk Distribution */}
         <div>
           <p className="font-poppins text-sm text-text-primary mb-2">Risk Distribution</p>
-          <div className="flex items-center gap-1 mb-1">
+          <div className="flex flex-wrap items-center gap-1 mb-1">
             <span className="font-poppins text-xs text-text-secondary">Low Risk</span>
             <div className="flex-1 h-3 bg-surface-border rounded-full overflow-hidden flex">
               <div className="h-full bg-success" style={{ width: `${riskDistribution.low}%` }} />

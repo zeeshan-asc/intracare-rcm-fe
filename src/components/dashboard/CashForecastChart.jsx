@@ -31,7 +31,7 @@ export function CashForecastChart() {
   return (
     <div className="border border-border rounded-lg p-4 md:p-5 h-full flex flex-col">
       {/* Header */}
-      <div className="mb-4">
+      <div className="mb-3">
         <h3 className="font-poppins font-semibold text-base md:text-lg text-primary leading-normal">
           Cash Intelligence & Liquidity Forecast
         </h3>
@@ -154,21 +154,15 @@ export function CashForecastChart() {
           className="hidden md:block absolute font-prompt font-medium text-xs text-text-secondary leading-tight w-[80px] text-center"
           style={{ top: '15%', left: '32%' }}
         >
-          Expected dip driven by payer delays
-          <span
-            className="absolute left-1/2 -translate-x-1/2 top-full w-px bg-text-secondary/50"
-            style={{ height: '50px' }}
-          />
+          
+          
         </div>
         <div
           className="hidden md:block absolute font-prompt font-medium text-xs text-text-secondary leading-tight w-[100px] text-center"
           style={{ top: '25%', left: '55%' }}
         >
-          Recovery from high-value claims nearing payments
-          <span
-            className="absolute left-1/2 -translate-x-1/2 top-full w-px bg-text-secondary/50"
-            style={{ height: '35px' }}
-          />
+          
+          
         </div>
       </div>
 

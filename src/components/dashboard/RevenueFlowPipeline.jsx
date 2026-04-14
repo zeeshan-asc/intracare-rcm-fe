@@ -51,18 +51,18 @@ function PipelineStage({ stage, isLast }) {
   return (
     <div className="mb-4">
       {/* Stage Header */}
-      <div className="flex items-center justify-between mb-1.5">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1.5">
         <div>
-          <h4 className="font-poppins font-bold text-base text-text-primary leading-snug">
+          <h4 className="font-poppins font-semibold text-sm text-text-primary leading-snug">
             {stage.name}
           </h4>
-          <p className="font-prompt text-sm text-text-secondary">
+          <p className="font-prompt text-xs text-text-secondary">
             {stage.claims} claims | <span className="font-bold">{stage.amount}</span> | {stage.conversion} conversion | Avg {stage.avgDays} days
           </p>
         </div>
         <div className="text-right">
           <p className="font-prompt text-xs text-text-primary">From Start</p>
-          <p className="font-prompt font-bold text-base text-primary">{stage.fromStart}</p>
+          <p className="font-prompt font-bold text-sm text-primary">{stage.fromStart}</p>
         </div>
       </div>
 
@@ -79,10 +79,10 @@ function PipelineStage({ stage, isLast }) {
         <div className="mt-2 flex items-start gap-2 bg-danger-light border border-danger-dark rounded-md px-3 py-2">
           <AlertTriangle size={14} className="text-danger-dark flex-shrink-0 mt-0.5" />
           <div className="flex-1 min-w-0">
-            <span className="font-poppins text-sm text-danger-dark">
+            <span className="block font-poppins text-xs md:text-sm text-danger-dark">
               {stage.warningText}
             </span>
-            <span className="font-poppins text-sm text-danger-dark ml-4">
+            <span className="block font-poppins text-xs md:text-sm text-danger-dark mt-0.5 sm:mt-0 sm:ml-4">
               <span className="font-bold">AI Evidence:</span> {stage.evidence}
             </span>
           </div>
@@ -102,10 +102,10 @@ function PipelineStage({ stage, isLast }) {
 function ConversionInsight({ title, children }) {
   return (
     <div className="flex-1">
-      <h4 className="font-poppins font-semibold text-base text-primary mb-1">
+      <h4 className="font-poppins font-semibold text-sm text-primary mb-1">
         {title}
       </h4>
-      <p className="font-poppins text-sm text-text-secondary leading-relaxed">
+      <p className="font-poppins text-xs text-text-secondary leading-relaxed">
         {children}
       </p>
     </div>
@@ -116,11 +116,11 @@ export function RevenueFlowPipeline() {
   return (
     <div className="border border-border rounded-lg p-4 md:p-5">
       {/* Header */}
-      <div className="mb-4">
-        <h3 className="font-poppins font-semibold text-lg lg:text-xl text-primary leading-normal">
+      <div className="mb-3">
+        <h3 className="font-poppins font-semibold text-base md:text-lg text-primary leading-normal">
           Revenue Flow Pipeline
         </h3>
-        <p className="font-poppins font-light text-sm text-text-secondary leading-normal">
+        <p className="font-poppins font-light text-xs md:text-sm text-text-secondary leading-normal">
           How revenue moves through the system - where it slows, leaks and stalls
         </p>
       </div>
@@ -153,15 +153,15 @@ export function RevenueFlowPipeline() {
 
       {/* Pipeline Metrics Summary */}
       <div className="bg-primary-muted rounded-md p-4">
-        <h4 className="font-poppins font-semibold text-base text-primary mb-3">
+        <h4 className="font-poppins font-semibold text-sm text-primary mb-3">
           Pipeline Metrics
         </h4>
         <div className="w-full">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-10 md:gap-x-16 gap-y-4 md:gap-y-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 md:gap-x-10 gap-y-3 md:gap-y-0">
           {pipelineMetrics.map((metric, index) => (
-            <div key={index} className="text-left md:justify-self-center min-w-[130px]">
+            <div key={index} className="text-left md:justify-self-center">
               <p className="font-prompt text-xs text-text-primary">{metric.label}</p>
-              <p className={`font-prompt font-semibold text-lg ${metric.valueColor || 'text-primary'}`}>
+              <p className={`font-prompt font-semibold text-base ${metric.valueColor || 'text-primary'}`}>
                 {metric.value}
               </p>
               <p className="font-prompt text-xs text-text-secondary">{metric.description}</p>

@@ -59,6 +59,8 @@ export default {
         '2xl': ['24px', { lineHeight: '1.3' }],
         '3xl': ['30px', { lineHeight: '1.2' }],
         '4xl': ['36px', { lineHeight: '1.2' }],
+        'heading-md': ['18px', { lineHeight: '1.4' }],
+        'body-sm': ['14px', { lineHeight: '1.5' }],
       },
       borderRadius: {
         sm: '4px',

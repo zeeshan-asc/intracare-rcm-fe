@@ -60,27 +60,23 @@ function RiskItem({ item, isLast }) {
     <div className={`py-2.5 ${!isLast ? 'border-b border-border' : ''}`}>
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1 min-w-0">
-          {/* Title: base (16px) on mobile, lg (18px) on desktop */}
-          <h4 className="font-poppins font-bold text-base lg:text-lg text-text-primary leading-snug">
+          <h4 className="font-poppins font-semibold text-sm text-text-primary leading-snug">
             {item.title}
           </h4>
-          {/* Subtitle + description: sm (14px) */}
-          <p className="font-prompt text-sm text-text-primary leading-relaxed mt-0.5">
+          <p className="font-prompt text-xs text-text-primary leading-relaxed mt-0.5">
             <span className="font-medium">{item.subtitle}</span>{' '}
             <span>{item.description}</span>
           </p>
-          {/* AI Evidence: sm (14px) */}
-          <p className="font-prompt text-sm text-primary leading-relaxed mt-0.5">
+          <p className="font-prompt text-xs text-primary leading-relaxed mt-0.5">
             <span className="font-bold">AI Evidence:</span>{' '}
             <span>{item.evidence}</span>
           </p>
         </div>
         <div className="flex flex-col items-end justify-start gap-1 flex-shrink-0 min-w-[72px]">
-          {/* Badge: xs (12px) */}
           <span className={`px-3 py-0.5 rounded-full text-xs font-prompt font-medium ${severity.bgColor} ${severity.textColor}`}>
             {severity.label}
           </span>
-          <ArrowDown size={24} strokeWidth={1.5} className="text-primary mt-1" />
+          <ArrowDown size={20} strokeWidth={1.5} className="text-primary mt-1" />
         </div>
       </div>
     </div>
@@ -91,23 +87,19 @@ export function LiquidityRiskPanel() {
   return (
     <div className="border border-border rounded-lg p-4 md:p-5 h-full flex flex-col">
       {/* Header */}
-      <div className="mb-1.5">
-        {/* Section title: lg (18px) on mobile, xl (20px) on desktop */}
-        <h3 className="font-poppins font-semibold text-lg lg:text-xl text-primary leading-normal">
+      <div className="mb-2">
+        <h3 className="font-poppins font-semibold text-base md:text-lg text-primary leading-normal">
           Liquidity Risk Intelligence
         </h3>
-        {/* Subtitle: sm (14px) */}
-        <p className="font-poppins font-light text-sm text-text-secondary leading-normal">
+        <p className="font-poppins font-light text-xs md:text-sm text-text-secondary leading-normal">
           AI-Identified risks impacting near-terms cash availability
         </p>
       </div>
 
       {/* Total Risk Amount */}
       <div className="mb-2">
-        {/* Large number: 2xl (24px) on mobile, 3xl (30px) on desktop */}
-        <span className="font-poppins font-bold text-2xl lg:text-3xl text-danger-accent leading-none">$4,100,000 </span>
-        {/* Description: sm (14px) */}
-        <span className="font-poppins text-sm text-text-secondary">in identified liquidity risks across 4 key areas</span>
+        <span className="font-poppins font-bold text-xl text-danger-accent leading-none">$4,100,000 </span>
+        <span className="font-poppins text-xs text-text-secondary">in identified liquidity risks across 4 key areas</span>
       </div>
 
       {/* Risk Items */}
@@ -123,8 +115,7 @@ export function LiquidityRiskPanel() {
 
       {/* Footer Context */}
       <div className="mt-2 pt-2 border-t border-border">
-        {/* Footer text: sm (14px) */}
-        <p className="font-poppins text-sm text-primary">
+        <p className="font-poppins text-xs text-primary">
           <span className="font-semibold">AI Context:</span>{' '}
           <span className="font-medium">
             Insights derived from AR aging (bucket 4-5), payment lag (service date vs payment date), adjustment patterns, and payer-level behavior across the last 30–90 days.

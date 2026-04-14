@@ -59,26 +59,26 @@ function ScenarioCard({ scenario, isSelected, onToggle }) {
   const confidenceColor = scenario.confidence >= 60 ? 'bg-success' : 'bg-primary';
   
   return (
-    <div className="rounded-lg p-4" style={{ backgroundColor: '#E5E5E5' }}>
+    <div className="rounded-lg p-3" style={{ backgroundColor: '#E5E5E5' }}>
       <div className="flex items-start gap-3">
         {/* Checkbox */}
         <button
           onClick={onToggle}
-          className={`w-7 h-7 rounded border-2 flex items-center justify-center flex-shrink-0 mt-0.5 cursor-pointer transition-colors ${
+          className={`w-6 h-6 rounded border-2 flex items-center justify-center flex-shrink-0 mt-0.5 cursor-pointer transition-colors ${
             isSelected 
               ? 'border-danger bg-white' 
               : 'border-border bg-white hover:border-primary-light'
           }`}
         >
-          {isSelected && <div className="w-4 h-4 bg-danger rounded-sm" />}
+          {isSelected && <div className="w-3 h-3 bg-danger rounded-sm" />}
         </button>
         
         {/* Content */}
         <div className="flex-1">
-          <h4 className="font-poppins font-semibold text-base text-primary mb-1">
+          <h4 className="font-poppins font-semibold text-sm text-primary mb-1">
             {scenario.title}
           </h4>
-          <p className="font-poppins text-xs text-text-secondary mb-3">
+          <p className="font-poppins text-xs text-text-secondary mb-2">
             {scenario.description}
           </p>
           
@@ -86,11 +86,11 @@ function ScenarioCard({ scenario, isSelected, onToggle }) {
           <div className="flex items-center justify-between">
             <div>
               <span className="font-poppins text-xs text-text-secondary">Impact: </span>
-              <span className="font-poppins font-semibold text-sm text-success">{scenario.impact}</span>
+              <span className="font-poppins font-semibold text-xs text-success">{scenario.impact}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="font-poppins text-xs text-text-secondary">Confidence: </span>
-              <span className="font-poppins font-semibold text-sm text-text-primary">{scenario.confidence}%</span>
+              <span className="font-poppins font-semibold text-xs text-text-primary">{scenario.confidence}%</span>
               <div className="w-16 h-1.5 bg-surface-border rounded-full overflow-hidden">
                 <div 
                   className={`h-full rounded-full ${confidenceColor}`}
@@ -106,22 +106,17 @@ function ScenarioCard({ scenario, isSelected, onToggle }) {
 }
 
 export function ScenarioSimulationEngine() {
-  const [selectedIds, setSelectedIds] = useState([2]);
+  const [selectedId, setSelectedId] = useState(2);
   
   const baseline = 2860000;
-  const totalImpact = initialScenarios
-    .filter(s => selectedIds.includes(s.id))
-    .reduce((sum, s) => sum + s.impactValue, 0);
+  const selectedScenario = initialScenarios.find((s) => s.id === selectedId);
+  const totalImpact = selectedScenario ? selectedScenario.impactValue : 0;
   const projected = baseline + totalImpact;
   
-  const selectedScenarios = initialScenarios.filter(s => selectedIds.includes(s.id));
+  const selectedScenarios = selectedScenario ? [selectedScenario] : [];
   
   const toggleScenario = (id) => {
-    setSelectedIds(prev => 
-      prev.includes(id) 
-        ? prev.filter(x => x !== id)
-        : [...prev, id]
-    );
+    setSelectedId(id);
   };
   
   const formatCurrency = (value) => {
@@ -129,70 +124,70 @@ export function ScenarioSimulationEngine() {
   };
   
   return (
-    <div className="border border-border rounded-xl p-5 md:p-6">
+    <div className="border border-border rounded-xl p-4 md:p-5">
       {/* Header */}
-      <div className="mb-5">
-        <h3 className="font-poppins font-semibold text-xl lg:text-2xl text-primary leading-normal">
+      <div className="mb-3">
+        <h3 className="font-poppins font-semibold text-base md:text-lg text-primary leading-normal">
           Scenario Simulation Engine
         </h3>
-        <p className="font-poppins font-light text-sm text-text-secondary leading-normal">
+        <p className="font-poppins font-light text-xs md:text-sm text-text-secondary leading-normal">
           Explore "what if" scenarios and see projected liquidity improvements
         </p>
       </div>
 
       {/* Baseline vs Projected */}
-      <div className="rounded-xl p-4 mb-5 flex items-center justify-between" style={{ backgroundColor: '#E5E5E5' }}>
+      <div className="rounded-xl p-4 mb-4 flex items-center justify-between" style={{ backgroundColor: '#E5E5E5' }}>
         <div>
           <p className="font-poppins text-xs text-text-secondary">Baseline</p>
-          <p className="font-poppins font-bold text-2xl text-primary">{formatCurrency(baseline)}</p>
+          <p className="font-poppins font-bold text-xl text-primary">{formatCurrency(baseline)}</p>
           <p className="font-poppins text-xs text-text-secondary">Current forecast</p>
         </div>
         <div className="text-right">
           <p className="font-poppins text-xs text-text-secondary">Projected</p>
-          <p className="font-poppins font-bold text-2xl text-success">{formatCurrency(projected)}</p>
+          <p className="font-poppins font-bold text-xl text-success">{formatCurrency(projected)}</p>
         </div>
       </div>
 
       {/* Scenario Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
         {initialScenarios.map((scenario) => (
           <ScenarioCard 
             key={scenario.id} 
             scenario={scenario}
-            isSelected={selectedIds.includes(scenario.id)}
+            isSelected={selectedId === scenario.id}
             onToggle={() => toggleScenario(scenario.id)}
           />
         ))}
       </div>
 
       {/* Selected Scenarios & High Impact Opportunities */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         {/* Selected Scenarios */}
         <div className="bg-surface-muted rounded-xl p-4">
-          <h4 className="font-poppins font-semibold text-lg text-primary mb-3">
+          <h4 className="font-poppins font-semibold text-sm text-primary mb-3">
             Selected Scenarios:
           </h4>
           {selectedScenarios.length > 0 ? (
             <div className="space-y-3">
               {selectedScenarios.map((scenario) => (
                 <div key={scenario.id}>
-                  <p className="font-poppins font-semibold text-base text-text-primary mb-1">
+                  <p className="font-poppins font-semibold text-sm text-text-primary mb-1">
                     {scenario.title}
                   </p>
-                  <p className="font-poppins text-sm text-text-secondary">
+                  <p className="font-poppins text-xs text-text-secondary">
                     {scenario.description}
                   </p>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="font-poppins text-sm text-text-secondary">No scenarios selected</p>
+            <p className="font-poppins text-xs text-text-secondary">No scenarios selected</p>
           )}
         </div>
 
         {/* High Impact Opportunities */}
         <div className="bg-surface-muted rounded-xl p-4">
-          <h4 className="font-poppins font-semibold text-lg text-primary mb-3">
+          <h4 className="font-poppins font-semibold text-sm text-primary mb-3">
             High Impact Opportunities
           </h4>
           <div className="space-y-3">
@@ -200,14 +195,14 @@ export function ScenarioSimulationEngine() {
               <div key={index}>
                 <div className="flex items-start justify-between mb-1">
                   <div>
-                    <p className="font-poppins font-semibold text-sm text-danger-dark">{opp.title}</p>
+                    <p className="font-poppins font-semibold text-xs text-danger-dark">{opp.title}</p>
                     {opp.subtitle && (
                       <p className="font-poppins text-xs text-text-secondary">
                         <span className="font-semibold">{opp.subtitle}</span> {opp.title}
                       </p>
                     )}
                   </div>
-                  <span className="font-poppins font-semibold text-sm text-success">{opp.value}</span>
+                  <span className="font-poppins font-semibold text-xs text-success">{opp.value}</span>
                 </div>
                 <ul className="space-y-0.5">
                   {opp.items.map((item, idx) => (
@@ -219,7 +214,7 @@ export function ScenarioSimulationEngine() {
               </div>
             ))}
             <div className="flex justify-end pt-2 border-t border-border">
-              <span className="font-poppins text-sm text-text-secondary">
+              <span className="font-poppins text-xs text-text-secondary">
                 Combined potential: <span className="font-semibold text-primary">$1,100,000</span>
               </span>
             </div>
@@ -229,10 +224,10 @@ export function ScenarioSimulationEngine() {
 
       {/* AI Recommendation */}
       <div className="rounded-xl p-4" style={{ backgroundColor: '#E5E5E5' }}>
-        <h4 className="font-poppins font-semibold text-lg text-primary mb-2">
+        <h4 className="font-poppins font-semibold text-sm text-primary mb-2">
           AI Recommendation
         </h4>
-        <p className="font-poppins text-sm text-text-secondary leading-relaxed">
+        <p className="font-poppins text-xs text-text-secondary leading-relaxed">
           Forecasting on reducing payer lag for the top 2 commercial payers represents the highest confidence opportunity to improve liquidity. This scenario has 45% confidence with $620,000 potential impact.
         </p>
       </div>

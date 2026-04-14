@@ -24,7 +24,7 @@ const payerGroups = [
     payerCycle: '86 days',
     paymentTrend: { days: 2, direction: 'down', label: 'Slowing' },
     risk: 'medium',
-    evidence: 'Payment lag increased from 78 → 86 days | ~$1.85M monthly collections affected.',
+    evidence: 'Payment lag increased from 78 → 86 days | ~$1.85M monthly collections affected with moderate variability across claims.',
     cycleProgress: 76,
   },
   {
@@ -37,7 +37,7 @@ const payerGroups = [
     payerCycle: '32 days',
     paymentTrend: { days: 1, direction: 'up', label: 'Improving' },
     risk: 'low',
-    evidence: 'Payment cycle stable at ~32 days (↓ 1 day vs baseline) | Consistent conversion.',
+    evidence: 'Payment cycle stable at ~32 days (↓ 1 day vs baseline) | Consistent conversion from claims to cash with low variance across recent payment cycles.',
     cycleProgress: 76,
   },
 ];
@@ -63,63 +63,63 @@ const riskConfig = {
 
 function PayerCard({ payer }) {
   const risk = riskConfig[payer.risk];
-  const TrendIcon = payer.paymentTrend.direction === 'down' ? ArrowDown : ArrowUp;
+  const TrendIcon = payer.paymentTrend.direction === 'down' ? ArrowUp : ArrowDown;
   const trendColor = payer.paymentTrend.direction === 'down' ? 'text-danger-accent' : 'text-success';
 
   return (
-    <div className="bg-primary-muted rounded-lg p-3.5">
-      <div className="flex gap-3">
+    <div className="bg-primary-muted rounded-lg p-2.5">
+      <div className="flex flex-col md:flex-row gap-3">
         {/* Left Section */}
         <div className="flex-1 min-w-0">
           {/* Top Row: Logo + Description */}
-          <div className="flex items-center gap-2 mb-0.5">
-            <img src={payer.logo} alt={payer.name} className="h-4 w-auto object-contain flex-shrink-0" />
-            <span className="font-poppins text-[13px] text-text-secondary truncate">
+          <div className="flex items-center gap-1.5 mb-0.5">
+            <img src={payer.logo} alt={payer.name} className="h-3.5 w-auto object-contain flex-shrink-0" />
+            <span className="font-poppins text-xs text-text-secondary truncate">
               {payer.description}
             </span>
           </div>
 
           {/* Metrics Row */}
-          <div className="grid grid-cols-3 gap-2 mt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 mt-1.5">
             <div>
-              <p className="font-poppins text-[13px] text-text-secondary">Monthly Contribution</p>
-              <p className="font-poppins font-semibold text-[17px] text-text-primary">{payer.monthlyContribution}</p>
+              <p className="font-poppins text-xs text-text-secondary">Monthly Contribution</p>
+              <p className="font-poppins font-semibold text-xs text-text-primary">{payer.monthlyContribution}</p>
               <div className="w-full h-1 bg-primary rounded-full mt-1" />
             </div>
             <div>
-              <p className="font-poppins text-[13px] text-text-secondary">Payer Cycle</p>
-              <p className="font-poppins font-semibold text-[17px] text-text-primary">{payer.payerCycle}</p>
+              <p className="font-poppins text-xs text-text-secondary">Payer Cycle</p>
+              <p className="font-poppins font-semibold text-xs text-text-primary">{payer.payerCycle}</p>
               <div className="w-full h-1 bg-white rounded-full mt-1 overflow-hidden">
                 <div className="h-full rounded-full bg-danger-accent" style={{ width: `${payer.cycleProgress}%` }} />
               </div>
             </div>
             <div>
-              <p className="font-poppins text-[13px] text-text-secondary">Payment Trend</p>
+              <p className="font-poppins text-xs text-text-secondary">Payment Trend</p>
               <div className="flex items-center gap-0.5">
-                <TrendIcon size={14} strokeWidth={2} className={trendColor} />
-                <p className="font-poppins font-semibold text-[17px] text-text-primary">{payer.paymentTrend.days} days</p>
+                <TrendIcon size={12} strokeWidth={2} className={trendColor} />
+                <p className="font-poppins font-semibold text-xs text-text-primary">{payer.paymentTrend.days} days</p>
               </div>
-              <p className="font-poppins text-[13px] text-text-secondary">{payer.paymentTrend.label}</p>
+              <p className="font-poppins text-xs text-text-secondary">{payer.paymentTrend.label}</p>
             </div>
           </div>
 
           {payer.behaviorNote && (
-            <div className="flex items-center gap-1 mt-2">
-              <AlertTriangle size={12} className="text-warning flex-shrink-0" />
-              <span className="font-poppins text-[13px] text-text-primary">{payer.behaviorNote}</span>
+            <div className="flex items-center gap-1 mt-1.5">
+              <AlertTriangle size={10} className="text-warning flex-shrink-0" />
+              <span className="font-poppins text-xs text-text-primary">{payer.behaviorNote}</span>
             </div>
           )}
         </div>
 
         {/* Right Section */}
-        <div className="w-[170px] flex-shrink-0 flex flex-col gap-1.5">
-          <div className="flex justify-end">
-            <span className={`px-2.5 py-1 rounded-full text-[13px] font-prompt font-medium ${risk.bgColor} ${risk.textColor}`}>
+        <div className="w-full md:w-[220px] flex-shrink-0 flex flex-col gap-1">
+          <div className="flex md:justify-end">
+            <span className={`px-2.5 py-1 rounded-full text-xs font-prompt font-medium ${risk.bgColor} ${risk.textColor}`}>
               {risk.label}
             </span>
           </div>
-          <div className="flex-1 bg-surface-muted rounded-md p-2">
-            <p className="font-poppins font-bold text-[13px] text-danger-dark mb-0.5">AI Evidence:</p>
+          <div className="flex-1 bg-surface-muted rounded-md p-1.5">
+            <p className="font-poppins font-bold text-xs text-danger-dark mb-0.5">AI Evidence:</p>
             <p className="font-poppins text-[11px] text-text-secondary leading-tight">{payer.evidence}</p>
           </div>
         </div>
@@ -131,9 +131,9 @@ function PayerCard({ payer }) {
 function AlertBox({ title, description, evidence }) {
   return (
     <div className="bg-surface-muted rounded-md p-3">
-      <h5 className="font-poppins font-semibold text-[15px] text-danger-dark mb-0.5">{title}</h5>
-      <p className="font-poppins text-[13px] text-text-secondary mb-1 leading-tight">{description}</p>
-      <p className="font-poppins text-[13px] text-primary leading-tight">
+      <h5 className="font-poppins font-semibold text-sm text-danger-dark mb-0.5">{title}</h5>
+      <p className="font-poppins text-xs text-text-secondary mb-1 leading-tight">{description}</p>
+      <p className="font-poppins text-xs text-primary leading-tight">
         <span className="font-bold">AI Evidence:</span> {evidence}
       </p>
     </div>
@@ -145,9 +145,9 @@ export function PaymentBehaviorIntelligence() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
       {/* Left Column - Payment Behavior Intelligence */}
       <div className="border border-border rounded-lg p-4 flex flex-col h-full">
-        <div className="mb-4">
-          <h3 className="font-poppins font-semibold text-xl lg:text-2xl text-primary">Payment Behavior Intelligence</h3>
-          <p className="font-poppins text-[17px] text-text-secondary">
+        <div className="mb-3">
+          <h3 className="font-poppins font-semibold text-base md:text-lg text-primary">Payment Behavior Intelligence</h3>
+          <p className="font-poppins font-light text-xs md:text-sm text-text-secondary">
             How different payer groups behave over time - patterns, delays, and emerging slowdowns
           </p>
         </div>
@@ -160,7 +160,7 @@ export function PaymentBehaviorIntelligence() {
         </div>
 
         {/* Alert Boxes */}
-        <div className="grid grid-cols-2 gap-3 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
           <AlertBox
             title="High Risk Alert"
             description="Commercial payer cluster trending below historical norms, with the top two payers showing consistent 8–11 day delays above baseline. Close monitoring recommended over the next two weeks."
@@ -175,13 +175,13 @@ export function PaymentBehaviorIntelligence() {
 
         {/* Payment Performance Timeline */}
         <div className="mb-4">
-          <h4 className="font-poppins font-semibold text-[19px] text-primary mb-2">Payment Performance Timeline</h4>
+          <h4 className="font-poppins font-semibold text-sm text-primary mb-2">Payment Performance Timeline</h4>
           <div className="space-y-2">
             {timelineData.map((item, index) => (
               <div key={index}>
-                <div className="flex items-center justify-between gap-2 mb-1">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-1">
                   <img src={item.logo} alt={item.name} className="h-5 w-24 object-contain object-left" />
-                  <span className="font-poppins text-[13px] text-text-primary">
+                  <span className="font-poppins text-xs text-text-primary">
                     Baseline: {item.baseline} | Current: {item.current}
                   </span>
                 </div>
@@ -204,15 +204,15 @@ export function PaymentBehaviorIntelligence() {
 
         {/* Payer Portfolio Summary */}
         <div className="bg-surface-muted rounded-lg p-3.5">
-          <h4 className="font-poppins font-semibold text-[19px] text-primary mb-2">Payer Portfolio Summary</h4>
-          <div className="grid grid-cols-4 gap-3">
+          <h4 className="font-poppins font-semibold text-sm text-primary mb-2">Payer Portfolio Summary</h4>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {portfolioSummary.map((metric, index) => (
               <div key={index}>
-                <p className="font-prompt text-[13px] text-text-primary">{metric.label}</p>
-                <p className={`font-prompt font-semibold text-2xl leading-tight ${metric.valueColor || 'text-primary'}`}>
+                <p className="font-prompt text-xs text-text-primary">{metric.label}</p>
+                <p className={`font-prompt font-semibold text-xl leading-tight ${metric.valueColor || 'text-primary'}`}>
                   {metric.value}
                 </p>
-                <p className="font-prompt text-[13px] text-text-secondary">{metric.description}</p>
+                <p className="font-prompt text-xs text-text-secondary">{metric.description}</p>
               </div>
             ))}
           </div>
@@ -220,26 +220,26 @@ export function PaymentBehaviorIntelligence() {
       </div>
 
       {/* Right Column - Cash Driver Decomposition */}
-      <div className="border border-border rounded-xl p-5 md:p-6 flex flex-col h-full">
-        <div className="mb-5">
-          <h3 className="font-poppins font-semibold text-xl lg:text-2xl text-primary leading-normal">
+      <div className="border border-border rounded-xl p-4 md:p-5 flex flex-col h-full">
+        <div className="mb-3">
+          <h3 className="font-poppins font-semibold text-base md:text-lg text-primary leading-normal">
             Cash Driver Decomposition
           </h3>
-          <p className="font-poppins font-light text-sm text-text-secondary leading-normal">
+          <p className="font-poppins font-light text-xs md:text-sm text-text-secondary leading-normal">
             Breaking down what's changing forecasted cash and why
           </p>
         </div>
 
         {/* Forecasted Cash Movement */}
-        <div className="bg-danger-muted/40 rounded-xl p-5 mb-5 text-center">
-          <p className="font-poppins text-sm text-text-primary mb-1">Forecasted Cash Movement</p>
-          <p className="font-poppins font-bold text-4xl text-danger-accent mb-1">-$660,000</p>
-          <p className="font-poppins text-sm text-text-secondary">Net change driven by 1 positive and 3 negative factors</p>
+        <div className="bg-danger-muted/40 rounded-xl p-4 mb-4 text-center">
+          <p className="font-poppins text-xs text-text-primary mb-1">Forecasted Cash Movement</p>
+          <p className="font-poppins font-bold text-xl text-danger-accent mb-1">-$660,000</p>
+          <p className="font-poppins text-xs text-text-secondary">Net change driven by 1 positive and 3 negative factors</p>
         </div>
 
         {/* Narrative Decomposition */}
-        <div className="mb-5">
-          <h4 className="font-poppins font-semibold text-lg text-primary mb-4">
+        <div className="mb-4">
+          <h4 className="font-poppins font-semibold text-sm text-primary mb-3">
             Narrative Decomposition
           </h4>
 
@@ -247,16 +247,16 @@ export function PaymentBehaviorIntelligence() {
           <div className="mb-4">
             <div className="flex items-center gap-2 mb-2">
               <span className="w-3 h-3 rounded-full bg-success" />
-              <span className="font-poppins font-semibold text-base text-success">Positive Drivers</span>
+              <span className="font-poppins font-semibold text-sm text-success">Positive Drivers</span>
             </div>
-            <div className="flex items-center gap-3 mb-1">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-1">
               <div className="flex-1 h-7 bg-surface-border rounded overflow-hidden relative">
                 <div className="h-full bg-gradient-to-r from-success to-success/60 rounded" style={{ width: '72%' }} />
                 <span className="absolute left-2 top-1/2 -translate-y-1/2 font-poppins font-semibold text-sm text-text-primary">
                   $420,000
                 </span>
               </div>
-              <div className="text-right min-w-[140px]">
+              <div className="text-left min-w-0 sm:min-w-[140px]">
                 <p className="font-poppins font-semibold text-sm text-text-primary">Increased Charges</p>
                 <p className="font-poppins text-xs text-text-secondary">Higher service volume in primary care and specialties.</p>
               </div>
@@ -271,7 +271,7 @@ export function PaymentBehaviorIntelligence() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="w-3 h-3 rounded-full bg-danger" />
-              <span className="font-poppins font-semibold text-base text-danger">Headwinds</span>
+              <span className="font-poppins font-semibold text-sm text-danger">Headwinds</span>
             </div>
             
             {[
@@ -280,14 +280,14 @@ export function PaymentBehaviorIntelligence() {
               { amount: '-$180,000', barWidth: '35%', title: 'AR Aging', desc: 'Reduced recovery rates on aging accounts', evidence: 'AR >90 days increased from 18% → 26%, contributing ~$180K reduction in near-term recoverability' },
             ].map((item, index) => (
               <div key={index} className="mb-3">
-                <div className="flex items-center gap-3 mb-1">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-1">
                   <div className="flex-1 h-7 bg-surface-border rounded overflow-hidden relative">
                     <div className="h-full bg-gradient-to-r from-danger to-danger/60 rounded" style={{ width: item.barWidth }} />
                     <span className="absolute left-2 top-1/2 -translate-y-1/2 font-poppins font-semibold text-sm text-text-primary">
                       {item.amount}
                     </span>
                   </div>
-                  <div className="text-right min-w-[140px]">
+                  <div className="text-left min-w-0 sm:min-w-[140px]">
                     <p className="font-poppins font-semibold text-sm text-text-primary">{item.title}</p>
                     <p className="font-poppins text-xs text-text-secondary">{item.desc}</p>
                   </div>
@@ -302,18 +302,18 @@ export function PaymentBehaviorIntelligence() {
         </div>
 
         {/* AI Narrative Summary */}
-        <div className="bg-surface-muted rounded-xl p-4 mb-5">
-          <h4 className="font-poppins font-semibold text-base text-primary-accent mb-2">
+        <div className="bg-surface-muted rounded-xl p-4 mb-4">
+          <h4 className="font-poppins font-semibold text-sm text-primary-accent mb-2">
             AI Narrative Summary
           </h4>
-          <p className="font-poppins text-sm text-text-secondary leading-relaxed">
+          <p className="font-poppins text-xs text-text-secondary leading-relaxed">
             Forecasted cash is down due to a combination of factors. <span className="font-semibold">Charges</span> increased by <span className="font-semibold text-success">$420K (+10%)</span>, but this is offset by higher <span className="font-semibold">adjustment rates</span> <span className="font-semibold text-danger">(22%)</span>, increased <span className="font-semibold">payment lag</span> <span className="font-semibold text-danger">(+11 days)</span>, and rising <span className="font-semibold">AR &gt;90 days</span> <span className="font-semibold text-danger">(26%)</span>. The <span className="font-semibold">net impact</span> reflects a <span className="font-semibold text-danger">$660K</span> contraction in <span className="font-semibold">near-term cash availability</span>.
           </p>
         </div>
 
         {/* Driver Ranking */}
         <div>
-          <h4 className="font-poppins font-semibold text-lg text-primary mb-3">
+          <h4 className="font-poppins font-semibold text-sm text-primary mb-3">
             Driver Ranking
           </h4>
           <div className="space-y-2">
@@ -323,12 +323,12 @@ export function PaymentBehaviorIntelligence() {
               { label: 'Payment Lag', value: '-$290,000 | Lag ↑ +11 days', color: 'text-warning', dotColor: 'bg-warning' },
               { label: 'AR Aging', value: '-$180,000 | AR >90 at 26%', color: 'text-danger', dotColor: 'bg-danger' },
             ].map((item, index) => (
-              <div key={index} className="flex items-center justify-between bg-surface-muted rounded-md px-4 py-3">
-                <div className="flex items-center gap-3">
-                  <span className={`w-3 h-3 rounded-full ${item.dotColor}`} />
-                  <span className="font-poppins text-sm text-text-primary">{item.label}</span>
+              <div key={index} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 bg-surface-muted rounded-md px-4 py-2.5">
+                <div className="flex items-center gap-3 flex-1">
+                  <span className={`w-2.5 h-2.5 rounded-full ${item.dotColor}`} />
+                  <span className="font-poppins text-xs text-text-primary text-left">{item.label}</span>
                 </div>
-                <span className={`font-poppins font-semibold text-sm ${item.color}`}>{item.value}</span>
+                <span className={`font-poppins font-semibold text-xs ${item.color}`}>{item.value}</span>
               </div>
             ))}
           </div>

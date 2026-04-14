@@ -20,11 +20,11 @@ export function Card({ children, className = '', variant = 'default', ...props }
 export function CardHeader({ title, subtitle, className = '' }) {
   return (
     <div className={`mb-2 ${className}`}>
-      <h3 className="font-poppins font-semibold text-heading-md text-primary leading-normal">
+      <h3 className="font-poppins font-semibold text-base md:text-lg text-primary leading-normal">
         {title}
       </h3>
       {subtitle && (
-        <p className="font-poppins font-light text-body-sm text-text-secondary leading-normal">
+        <p className="font-poppins font-light text-xs md:text-sm text-text-secondary leading-normal">
           {subtitle}
         </p>
       )}
