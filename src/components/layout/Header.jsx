@@ -1,6 +1,6 @@
 import { StatusIndicator } from '../shared';
 import { NavLink, Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, RefreshCw, X } from 'lucide-react';
 import { useState } from 'react';
 
 const navItems = [
@@ -92,18 +92,20 @@ export function Header({
           </nav>
         </div>
         
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-3 gap-2 text-white min-w-0">
-          <div className="flex flex-wrap items-center gap-2 min-w-0">
+        <div className="grid grid-cols-1 sm:grid-cols-3 sm:items-center mt-3 gap-2 text-white min-w-0">
+          <div className="flex flex-wrap items-center gap-2 min-w-0 sm:justify-self-start">
             <StatusIndicator status={systemStatus} />
             <span className="font-prompt text-sm md:text-base break-words">AI System Active</span>
           </div>
-          
-          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 text-xs md:text-sm min-w-0">
-            <span className="font-prompt break-words">
-              Last Updated: {lastUpdated}
-            </span>
-            <span className="font-prompt break-words">
-              Data Refresh: {dataRefresh}
+
+          <div className="text-xs md:text-sm min-w-0 sm:text-center sm:justify-self-center">
+            <span className="font-prompt break-words">Last Updated: {lastUpdated}</span>
+          </div>
+
+          <div className="text-xs md:text-sm min-w-0 sm:justify-self-end">
+            <span className="font-prompt break-words inline-flex items-center gap-1.5">
+              <RefreshCw size={13} strokeWidth={2.5} className="opacity-95" />
+              <span>Data Refresh: {dataRefresh}</span>
             </span>
           </div>
         </div>

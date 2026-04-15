@@ -87,7 +87,7 @@ function FilterTabs() {
 function SummaryStatCard({ label, value, bg, textColor }) {
   return (
     <div className={`${bg} rounded-lg p-4 text-center`}>
-      <p className="font-poppins text-[10px] text-text-secondary mb-1">{label}</p>
+      <p className="font-poppins font-semibold text-sm text-text-secondary mb-1">{label}</p>
       <p className={`font-poppins font-bold text-xl ${textColor}`}>{value}</p>
     </div>
   );

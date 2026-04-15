@@ -2,7 +2,6 @@ import { Header, PageWrapper, PageContent } from '../components/layout';
 import {
   SummaryStatsRow,
   TrendIntelligenceSurface,
-  AlertBanner,
   AutomatedInsightsStream,
   PerformanceOutlierDetection,
   PayerBehaviorIntelligence,
@@ -27,14 +26,6 @@ export function OperationalIntelligencePage() {
         <SummaryStatsRow />
         
         <TrendIntelligenceSurface />
-        
-        <AlertBanner
-          title="Collection Rate Analysis"
-          description="Below target. Cash conversion weakening across 3 clinic segments."
-          current="82"
-          expected="85-95"
-          status="Monitor Closely"
-        />
         
         <AutomatedInsightsStream />
         

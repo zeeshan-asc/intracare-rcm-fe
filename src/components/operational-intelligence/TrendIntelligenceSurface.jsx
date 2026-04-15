@@ -87,18 +87,35 @@ function MiniBarChart({ bars, barColors }) {
   );
 }
 
-function MetricCard({ label, value, change, isNegative, useTrendUpIcon, expectedRange, bars, status, cardTone, barColors }) {
+function MetricCard({
+  label,
+  value,
+  change,
+  isNegative,
+  useTrendUpIcon,
+  expectedRange,
+  bars,
+  status,
+  cardTone,
+  barColors,
+  isSelected = false,
+}) {
   const styles = statusStyles[status] || statusStyles.normal;
   const toneStyle = cardToneStyles[cardTone] || cardToneStyles.warning;
   
   return (
     <div
-      className="rounded-md p-4 min-h-[132px] flex flex-col border"
-      style={{ borderColor: toneStyle.borderColor, background: toneStyle.background }}
+      className={`rounded-md p-4 min-h-[132px] flex flex-col border transition-colors ${
+        isSelected ? 'ring-2 ring-[#D97706]' : ''
+      }`}
+      style={{
+        borderColor: isSelected ? '#D97706' : toneStyle.borderColor,
+        background: isSelected ? 'rgba(217, 119, 6, 0.16)' : toneStyle.background,
+      }}
     >
       <div className="flex items-start justify-between">
         <div>
-          <p className="font-poppins text-[11px] tracking-wide text-text-secondary">{label}</p>
+          <p className="font-poppins font-semibold text-sm tracking-wide text-text-secondary">{label}</p>
         </div>
         <AlertTriangle size={11} className={status === 'critical' ? 'text-danger-accent' : 'text-warning'} />
       </div>
@@ -163,8 +180,28 @@ export function TrendIntelligenceSurface() {
             status={metric.status}
             cardTone={metric.cardTone}
             barColors={metric.barColors}
+            isSelected={metric.id === 4}
           />
         ))}
+      </div>
+      <div className="bg-[#F5F5F5] rounded-md p-4 mt-3">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+          <div>
+            <p className="font-poppins font-bold text-base text-text-primary">Collection Rate Analysis</p>
+            <p className="font-poppins text-sm text-text-secondary mt-0.5">
+              Below target. Cash conversion weakening across 3 clinic segments.
+            </p>
+          </div>
+          <div className="flex items-center gap-3 text-xs font-poppins">
+            <span className="text-text-secondary">
+              Current: <span className="font-semibold text-text-primary">82</span>
+            </span>
+            <span className="text-text-secondary">
+              Expected: <span className="font-semibold text-text-primary">85-95</span>
+            </span>
+            <span className="bg-primary-light text-white px-3 py-1 rounded font-medium">Monitor Closely</span>
+          </div>
+        </div>
       </div>
     </Card>
   );

@@ -85,14 +85,14 @@ function RiskCard({ item }) {
           <p className="font-poppins text-xs text-text-secondary mt-0.5">{item.recommendedAction}</p>
         </div>
         
-        <div className="flex gap-2">
-          <button className="bg-danger/10 border border-danger text-danger font-poppins font-semibold text-xs py-2 px-4 rounded shadow-sm hover:bg-danger hover:text-white transition-colors cursor-pointer">
+        <div className="grid grid-cols-3 gap-2">
+          <button className="w-full bg-danger/10 border border-danger text-danger font-poppins font-semibold text-xs py-2 px-4 rounded shadow-sm hover:bg-danger hover:text-white transition-colors cursor-pointer">
             Escalate to VP
           </button>
-          <button className="bg-warning-subtle/10 border border-warning-subtle text-warning-subtle font-poppins font-semibold text-xs py-2 px-4 rounded shadow-sm hover:bg-warning-subtle hover:text-white transition-colors cursor-pointer">
+          <button className="w-full bg-warning-subtle/10 border border-warning-subtle text-warning-subtle font-poppins font-semibold text-xs py-2 px-4 rounded shadow-sm hover:bg-warning-subtle hover:text-white transition-colors cursor-pointer">
             Prioritize
           </button>
-          <button className="bg-primary-muted border border-primary text-primary font-poppins font-semibold text-xs py-2 px-4 rounded shadow-sm hover:bg-primary hover:text-white transition-colors cursor-pointer">
+          <button className="w-full bg-primary-muted border border-primary text-primary font-poppins font-semibold text-xs py-2 px-4 rounded shadow-sm hover:bg-primary hover:text-white transition-colors cursor-pointer">
             View Details
           </button>
         </div>
