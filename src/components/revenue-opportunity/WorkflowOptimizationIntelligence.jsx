@@ -89,7 +89,7 @@ export function WorkflowOptimizationIntelligence() {
         subtitle="AI-driven recommendations to optimize staffing, routing, and contact timing"
       />
       
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mt-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 mt-3">
         <div className="border border-surface-border rounded-lg p-2">
           <h4 className="font-poppins font-semibold text-sm text-primary mb-2">
             Collector Performance
@@ -205,7 +205,7 @@ export function WorkflowOptimizationIntelligence() {
         <h4 className="font-poppins font-semibold text-sm text-primary mb-3">
           AI Optimization Recommendations
         </h4>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {recommendations.map((rec, index) => (
             <div key={index}>
               <p className="font-poppins text-xs text-primary">

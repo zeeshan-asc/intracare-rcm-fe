@@ -68,7 +68,7 @@ function PayerCard({ payer }) {
 
   return (
     <div className="bg-primary-muted rounded-lg p-2.5">
-      <div className="flex flex-col md:flex-row gap-3">
+      <div className="flex flex-col lg:flex-row gap-3">
         {/* Left Section */}
         <div className="flex-1 min-w-0">
           {/* Top Row: Logo + Description */}
@@ -112,8 +112,8 @@ function PayerCard({ payer }) {
         </div>
 
         {/* Right Section */}
-        <div className="w-full md:w-[220px] flex-shrink-0 flex flex-col gap-1">
-          <div className="flex md:justify-end">
+        <div className="w-full lg:w-[220px] flex-shrink-0 flex flex-col gap-1">
+          <div className="flex lg:justify-end">
             <span className={`px-2.5 py-1 rounded-full text-xs font-prompt font-medium ${risk.bgColor} ${risk.textColor}`}>
               {risk.label}
             </span>
@@ -142,7 +142,7 @@ function AlertBox({ title, description, evidence }) {
 
 export function PaymentBehaviorIntelligence() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 items-stretch">
       {/* Left Column - Payment Behavior Intelligence */}
       <div className="border border-border rounded-lg p-4 flex flex-col h-full">
         <div className="mb-3">

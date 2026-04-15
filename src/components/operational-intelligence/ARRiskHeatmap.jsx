@@ -67,11 +67,11 @@ const clinics = [
 function FilterTabs() {
   const tabs = ['Clinic', 'Provider', 'Payer'];
   return (
-    <div className="flex items-center gap-0 bg-[#E8EEF4] rounded-md p-1">
+    <div className="flex flex-wrap items-center gap-1 bg-[#E8EEF4] rounded-md p-1">
       {tabs.map((tab, index) => (
-        <button
+      <button
           key={tab}
-          className={`px-4 py-1.5 rounded text-xs font-poppins transition-colors cursor-pointer ${
+          className={`px-3 py-1.5 rounded text-xs font-poppins transition-colors cursor-pointer ${
             index === 0 
               ? 'bg-primary text-white font-medium' 
               : 'text-text-secondary hover:bg-white/50'
@@ -181,7 +181,7 @@ function ClinicCard({ name, amount, percentage, riskScore, concentration, risk }
 
 function RiskLegend() {
   return (
-    <div className="flex items-center justify-center gap-6 mt-4">
+    <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
       <div className="flex items-center gap-1.5">
         <span className="w-2.5 h-2.5 rounded-full bg-[#2E9E47]" />
         <span className="font-poppins text-[10px] text-text-secondary">Low Risk(0-40)</span>
@@ -200,8 +200,8 @@ function RiskLegend() {
 
 export function ARRiskHeatmap() {
   return (
-    <Card className="p-5">
-      <div className="flex items-center justify-between mb-5">
+    <Card className="p-4 md:p-5">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-5">
         <CardHeader
           title="AR Risk Heatmap"
           subtitle="Where AR is building and risk is increasing"
@@ -209,13 +209,13 @@ export function ARRiskHeatmap() {
         <FilterTabs />
       </div>
       
-      <div className="grid grid-cols-4 gap-3 mb-5">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
         {summaryStats.map((stat, index) => (
           <SummaryStatCard key={index} {...stat} />
         ))}
       </div>
       
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
         {clinics.map((clinic) => (
           <ClinicCard key={clinic.id} {...clinic} />
         ))}

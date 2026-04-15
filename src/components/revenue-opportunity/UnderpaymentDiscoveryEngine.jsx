@@ -69,7 +69,7 @@ function ClaimCard({ claim }) {
           {claim.action}
         </p>
         
-        <div className="flex items-center gap-6 mt-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-3">
           <div>
             <p className="font-poppins text-xs text-text-secondary/70 uppercase">Expected</p>
             <p className="font-poppins font-semibold text-xs text-text-primary">{claim.expected}</p>
@@ -85,14 +85,14 @@ function ClaimCard({ claim }) {
         </div>
       </div>
       
-      <div className="p-3 flex gap-2">
-        <button className="bg-success/10 border border-success text-success font-poppins font-semibold text-xs py-2 px-4 rounded shadow-sm hover:bg-success hover:text-white transition-colors cursor-pointer">
+      <div className="p-3 flex flex-wrap gap-2">
+        <button className="bg-success/10 border border-success text-success font-poppins font-semibold text-xs py-2 px-3 rounded shadow-sm hover:bg-success hover:text-white transition-colors cursor-pointer">
           Generate Appeal
         </button>
-        <button className="bg-primary-muted border border-primary text-primary font-poppins font-semibold text-xs py-2 px-4 rounded shadow-sm hover:bg-primary hover:text-white transition-colors cursor-pointer">
+        <button className="bg-primary-muted border border-primary text-primary font-poppins font-semibold text-xs py-2 px-3 rounded shadow-sm hover:bg-primary hover:text-white transition-colors cursor-pointer">
           View Evidence
         </button>
-        <button className="bg-[#f9f9f9] border border-surface-border text-text-secondary font-poppins font-semibold text-xs py-2 px-4 rounded shadow-sm hover:bg-surface-light transition-colors cursor-pointer">
+        <button className="bg-[#f9f9f9] border border-surface-border text-text-secondary font-poppins font-semibold text-xs py-2 px-3 rounded shadow-sm hover:bg-surface-light transition-colors cursor-pointer">
           Dismiss
         </button>
       </div>

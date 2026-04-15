@@ -1,4 +1,3 @@
-import { ChevronUp } from 'lucide-react';
 import { Card, CardHeader } from '../shared';
 
 const claimTypes = {
@@ -59,60 +58,61 @@ function ClaimCard({ claim }) {
   
   return (
     <div className="border border-surface-border rounded overflow-hidden">
-      <div className="bg-[#f9f9f9] border-b border-surface-border p-3">
-        <div className="flex items-start justify-between gap-3">
+      <div className="bg-[#f9f9f9] border-b border-surface-border p-2">
+        <div className="flex items-start justify-between gap-2">
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2">
-              <p className="font-poppins font-semibold text-sm text-text-primary">
+            <div className="flex items-center gap-1.5">
+              <p className="font-poppins font-semibold text-xs text-text-primary">
                 Claim ID: {claim.id}
               </p>
-              <span className={`px-1.5 py-0.5 rounded text-xs font-prompt ${typeConfig.color}`}>
+              <span className={`px-1 py-0.5 rounded text-[10px] font-prompt ${typeConfig.color}`}>
                 {typeConfig.label}
               </span>
             </div>
-            <p className="font-poppins text-xs text-primary-accent mt-0.5">
+            <p className="font-poppins text-[11px] text-primary-accent mt-0.5">
               {claim.issue}
             </p>
           </div>
           <div className="text-right shrink-0">
-            <p className={`font-poppins font-bold text-xl ${claim.riskColor}`}>
+            <p className={`font-poppins font-bold text-base ${claim.riskColor}`}>
               {claim.denialRisk}%
             </p>
-            <p className="font-poppins text-xs text-text-secondary">
+            <p className="font-poppins text-[10px] text-text-secondary">
               Denial Risk
             </p>
           </div>
         </div>
-        
       </div>
       
-      <div className="p-3 flex items-center gap-3">
-        <div className="flex-1 bg-surface border border-surface-border rounded p-3">
-          <div className="flex items-center gap-10 md:gap-12">
+      <div className="p-2 flex flex-col lg:flex-row lg:items-center gap-2">
+        <div className="flex-1 bg-surface border border-surface-border rounded p-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             <div>
-              <p className="font-poppins text-xs text-text-secondary/70 uppercase">Claim Amount</p>
-              <p className="font-poppins font-semibold text-xs text-primary">{claim.claimAmount}</p>
+              <p className="font-poppins text-[10px] text-text-secondary/70 uppercase">Claim Amount</p>
+              <p className="font-poppins font-semibold text-[11px] text-primary">{claim.claimAmount}</p>
             </div>
             <div>
-              <p className="font-poppins text-xs text-text-secondary/70 uppercase">Confidence</p>
-              <p className="font-poppins font-semibold text-xs text-primary-accent">{claim.confidence}</p>
+              <p className="font-poppins text-[10px] text-text-secondary/70 uppercase">Confidence</p>
+              <p className="font-poppins font-semibold text-[11px] text-primary-accent">{claim.confidence}</p>
             </div>
             <div>
-              <p className="font-poppins text-xs text-text-secondary/70 uppercase">Review Type</p>
-              <p className="font-poppins font-semibold text-xs text-text-primary">{claim.reviewType}</p>
+              <p className="font-poppins text-[10px] text-text-secondary/70 uppercase">Review Type</p>
+              <p className="font-poppins font-semibold text-[11px] text-text-primary">{claim.reviewType}</p>
             </div>
           </div>
-          <div className="bg-surface-highlight rounded p-2 mt-3">
-            <p className="font-poppins text-xs text-primary-accent uppercase">Recommended Action</p>
-            <p className="font-poppins text-xs text-text-secondary mt-0.5">{claim.recommendedAction}</p>
+          <div className="bg-surface-highlight rounded p-1.5 mt-2">
+            <p className="font-poppins text-[10px] text-primary-accent uppercase">Recommended Action</p>
+            <p className="font-poppins text-[11px] text-text-secondary">{claim.recommendedAction}</p>
           </div>
         </div>
-        <button className="bg-success/10 border border-success text-success font-poppins font-semibold text-xs py-2 px-4 rounded shadow-sm hover:bg-success hover:text-white transition-colors cursor-pointer whitespace-nowrap">
-          Fix & Submit
-        </button>
-        <button className="bg-primary-muted border border-primary text-primary font-poppins font-semibold text-xs py-2 px-4 rounded shadow-sm hover:bg-primary hover:text-white transition-colors cursor-pointer">
-          Review
-        </button>
+        <div className="flex flex-wrap gap-2 lg:flex-col lg:w-auto">
+          <button className="bg-success/10 border border-success text-success font-poppins font-semibold text-[11px] py-1.5 px-3 rounded shadow-sm hover:bg-success hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+            Fix & Submit
+          </button>
+          <button className="bg-primary-muted border border-primary text-primary font-poppins font-semibold text-[11px] py-1.5 px-3 rounded shadow-sm hover:bg-primary hover:text-white transition-colors cursor-pointer">
+            Review
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -120,34 +120,34 @@ function ClaimCard({ claim }) {
 
 export function DenialPreventionSystem() {
   return (
-    <Card className="p-4">
+    <Card className="p-3">
       <CardHeader
         title="Denial Prevention System"
         subtitle="Predict & prevent denials before submission - 2 high-risk claims detected"
       />
       
-      <div className="bg-danger-muted rounded p-4 mt-3">
+      <div className="bg-danger-muted rounded p-2.5 mt-2">
         <div className="flex items-center justify-between">
           <div>
-            <p className="font-poppins font-semibold text-sm text-text-primary">
+            <p className="font-poppins font-semibold text-xs text-text-primary">
               Claims Flagged for Review
             </p>
-            <p className="font-poppins text-xs text-text-secondary mt-0.5">
+            <p className="font-poppins text-[11px] text-text-secondary">
               4 claims at risk of denial
             </p>
           </div>
           <div className="text-right">
-            <p className="font-poppins font-bold text-xl text-danger-accent">
+            <p className="font-poppins font-bold text-base text-danger-accent">
               $9.1K
             </p>
-            <p className="font-poppins text-xs text-text-secondary">
+            <p className="font-poppins text-[11px] text-text-secondary">
               Total Revenue at Risk
             </p>
           </div>
         </div>
       </div>
       
-      <div className="space-y-3 mt-4">
+      <div className="space-y-2 mt-3">
         {claims.map((claim) => (
           <ClaimCard key={claim.id} claim={claim} />
         ))}

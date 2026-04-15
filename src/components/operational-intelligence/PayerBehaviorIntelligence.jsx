@@ -62,7 +62,7 @@ const payers = [
 function FilterTabs() {
   const tabs = ['By Status', 'By Volume', 'By Denials', 'By Delays'];
   return (
-    <div className="flex items-center gap-1 bg-surface-muted rounded-lg p-1 overflow-x-auto">
+    <div className="flex flex-wrap items-center gap-1 bg-surface-muted rounded-lg p-1">
       {tabs.map((tab, index) => (
         <button
           key={tab}
@@ -156,7 +156,7 @@ export function PayerBehaviorIntelligence() {
         <FilterTabs />
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3">
         {payers.map((payer) => (
           <PayerCard key={payer.id} {...payer} />
         ))}

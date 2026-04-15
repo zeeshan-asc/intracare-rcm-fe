@@ -208,7 +208,7 @@ export function EntityContributionIntelligence() {
       </div>
 
       {/* Payer & Clinic Rankings */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mb-4">
         {/* Payer Ranking */}
         <div>
           <div className="flex items-center gap-2 mb-3">
