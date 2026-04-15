@@ -13,14 +13,15 @@ export function HomePlaceholderPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col relative overflow-hidden" style={{ backgroundColor: '#084B86' }}>
-      {/* Background Image */}
-      <img
-        src="/bg-main.png"
-        alt=""
-        className="absolute bottom-0 right-0 w-[60%] md:w-[50%] lg:w-[45%] max-w-[800px] pointer-events-none select-none"
-        aria-hidden="true"
-      />
+    <div
+      className="min-h-screen flex flex-col relative overflow-hidden"
+      style={{
+        backgroundImage: "url('/Landingpage.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       {/* Navigation */}
       <header className="relative z-10 w-[95%] md:w-[90%] mx-auto py-5">
         <nav className="flex items-center justify-between md:justify-center">
