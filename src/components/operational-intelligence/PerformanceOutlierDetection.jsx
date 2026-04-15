@@ -79,11 +79,11 @@ const outliers = [
 function FilterTabs() {
   const tabs = ['All', 'Clinic', 'Providers', 'Segments'];
   return (
-    <div className="flex items-center gap-1 bg-surface-muted rounded-lg p-1">
+    <div className="flex flex-wrap items-center gap-1 bg-surface-muted rounded-lg p-1">
       {tabs.map((tab, index) => (
         <button
           key={tab}
-          className={`px-3 py-1 rounded text-xs font-poppins transition-colors cursor-pointer ${
+          className={`px-2.5 sm:px-3 py-1 rounded text-xs font-poppins transition-colors cursor-pointer whitespace-nowrap ${
             index === 0 ? 'bg-surface text-primary font-semibold' : 'text-text-secondary hover:bg-surface/50'
           }`}
         >
@@ -137,7 +137,7 @@ function OutlierCard({ icon: Icon, name, metric, current, benchmark, deviation, 
           <p className="font-poppins font-semibold text-xs text-text-primary">{name}</p>
           <p className="font-poppins text-xs text-text-secondary">{metric}</p>
           
-          <div className="flex items-center gap-4 mt-2">
+          <div className="flex flex-wrap items-center gap-3 mt-2">
             <div>
               <span className="font-poppins text-xs text-text-secondary">Current </span>
               <span className="font-poppins font-semibold text-xs text-primary">{current}</span>
@@ -165,12 +165,14 @@ function OutlierCard({ icon: Icon, name, metric, current, benchmark, deviation, 
 export function PerformanceOutlierDetection() {
   return (
     <Card className="p-4">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-4">
         <CardHeader
           title="Performance Outlier Detection"
           subtitle="Entities drifting away from expected performance"
         />
-        <FilterTabs />
+        <div className="w-full lg:w-auto">
+          <FilterTabs />
+        </div>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">

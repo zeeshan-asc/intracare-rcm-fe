@@ -52,11 +52,11 @@ const statusLegend = [
 function FilterTabs() {
   const tabs = ['Payer', 'Facility', 'Provider', 'Specialty'];
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       {tabs.map((tab, index) => (
         <button
           key={tab}
-          className={`px-4 py-1.5 rounded-md text-xs font-poppins transition-colors cursor-pointer border ${
+          className={`px-3 py-1.5 rounded-md text-xs font-poppins transition-colors cursor-pointer border whitespace-nowrap ${
             index === 0 
               ? 'bg-primary text-white border-primary font-medium' 
               : 'bg-white text-text-secondary border-gray-300 hover:bg-gray-50'
@@ -118,8 +118,8 @@ function PayerLogo({ name }) {
 
 function SegmentCard({ name, type, status, hasLogo, metrics }) {
   return (
-    <div className="bg-[#F3F4F6] border border-gray-200 rounded-lg p-4 shadow-sm">
-      <div className="flex items-start justify-between mb-4">
+    <div className="bg-[#F3F4F6] border border-gray-200 rounded-lg p-3 sm:p-4 shadow-sm">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
         <div>
           {hasLogo ? (
             <PayerLogo name={name} />
@@ -131,7 +131,7 @@ function SegmentCard({ name, type, status, hasLogo, metrics }) {
         <StatusBadge />
       </div>
       
-      <div className="flex items-center justify-center gap-20">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
         <div className="flex flex-col items-center">
           <p className="font-poppins text-[11px] text-[#565E67] font-semibold mb-2">Collections</p>
           <MetricIndicator isHealthy={metrics.collections} />
@@ -155,7 +155,7 @@ function SegmentCard({ name, type, status, hasLogo, metrics }) {
 
 function Legend() {
   return (
-    <div className="flex items-center justify-center gap-6 mt-5">
+    <div className="flex flex-wrap items-center justify-center gap-4 mt-5">
       {statusLegend.map((item, index) => (
         <LegendItem key={index} color={item.color} label={item.label} />
       ))}
@@ -165,23 +165,19 @@ function Legend() {
 
 export function SegmentationIntelligence() {
   return (
-    <Card className="p-5">
-      <div className="flex items-center justify-between mb-5">
+    <Card className="p-4 md:p-5">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-5">
         <CardHeader
           title="Segmentation Intelligence"
           subtitle="Identify localized vs systematic issues across segments"
         />
-        <FilterTabs />
+        <div className="w-full lg:w-auto">
+          <FilterTabs />
+        </div>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {segments.slice(0, 2).map((segment) => (
-          <SegmentCard key={segment.id} {...segment} />
-        ))}
-      </div>
-      
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
-        {segments.slice(2).map((segment) => (
+        {segments.map((segment) => (
           <SegmentCard key={segment.id} {...segment} />
         ))}
       </div>

@@ -19,12 +19,12 @@ export function Header({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-gradient-header py-4 md:py-5 relative">
-      <div className="w-[95%] md:w-[90%] mx-auto">
+    <header className="bg-gradient-header py-4 md:py-5 relative overflow-x-clip">
+      <div className="w-[95%] md:w-[90%] max-w-full mx-auto">
         <div className="flex items-start justify-between gap-3 md:gap-4">
           <div className="flex-1 min-w-0">
             <Link to="/">
-              <h1 className="font-poppins font-semibold text-xl md:text-2xl lg:text-3xl text-white leading-tight hover:text-white/90 transition-colors">
+              <h1 className="font-poppins font-semibold text-xl md:text-2xl lg:text-3xl text-white leading-tight break-words hover:text-white/90 transition-colors">
                 {title}
               </h1>
             </Link>
@@ -92,17 +92,17 @@ export function Header({
           </nav>
         </div>
         
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-3 gap-2 text-white">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-3 gap-2 text-white min-w-0">
+          <div className="flex flex-wrap items-center gap-2 min-w-0">
             <StatusIndicator status={systemStatus} />
-            <span className="font-prompt text-sm md:text-base">AI System Active</span>
+            <span className="font-prompt text-sm md:text-base break-words">AI System Active</span>
           </div>
           
-          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 text-xs md:text-sm">
-            <span className="font-prompt">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 text-xs md:text-sm min-w-0">
+            <span className="font-prompt break-words">
               Last Updated: {lastUpdated}
             </span>
-            <span className="font-prompt">
+            <span className="font-prompt break-words">
               Data Refresh: {dataRefresh}
             </span>
           </div>

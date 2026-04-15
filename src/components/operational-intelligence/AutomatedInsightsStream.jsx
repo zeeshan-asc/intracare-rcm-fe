@@ -58,6 +58,13 @@ const rightInsights = [
   },
 ];
 
+const primaryInsightGrid = [
+  insights[0],
+  rightInsights[0],
+  insights[1],
+  rightInsights[1],
+];
+
 const severityStyles = {
   critical: {
     border: 'border-2 border-danger-accent',
@@ -81,14 +88,19 @@ function InsightCard({ icon: Icon, iconColor, title, description, metrics, sever
   const styles = severityStyles[severity] || severityStyles.medium;
   
   return (
-    <div className={`rounded-md p-3 cursor-pointer ${styles.border} ${styles.bg}`}>
+    <div className={`rounded-md p-3 cursor-pointer h-full ${styles.border} ${styles.bg}`}>
       <div className="flex items-start gap-3">
         <div className={`mt-0.5 ${iconColor}`}>
           <Icon size={16} />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
-            <p className="font-poppins font-semibold text-xs text-text-primary">{title}</p>
+            <p
+              className="flex-1 min-w-0 font-poppins font-semibold text-[11px] xl:text-xs text-text-primary truncate leading-tight"
+              title={title}
+            >
+              {title}
+            </p>
             <div className="flex items-center gap-2 shrink-0">
               <FigmaBadge tone={severity} />
               <span className="font-poppins text-xs text-text-secondary">{timestamp}</span>
@@ -106,11 +118,11 @@ function InsightCard({ icon: Icon, iconColor, title, description, metrics, sever
 function FilterTabs() {
   const tabs = ['All', 'Critical', 'High', 'Medium', 'Low'];
   return (
-    <div className="flex items-center gap-1 bg-surface-muted rounded-lg p-1">
+    <div className="flex flex-wrap items-center gap-1 bg-surface-muted rounded-lg p-1">
       {tabs.map((tab, index) => (
         <button
           key={tab}
-          className={`px-3 py-1 rounded text-xs font-poppins transition-colors cursor-pointer ${
+          className={`px-2.5 sm:px-3 py-1 rounded text-xs font-poppins transition-colors cursor-pointer whitespace-nowrap ${
             index === 0 ? 'bg-surface text-primary font-semibold' : 'text-text-secondary hover:bg-surface/50'
           }`}
         >
@@ -124,31 +136,26 @@ function FilterTabs() {
 export function AutomatedInsightsStream() {
   return (
     <Card className="p-4">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-4">
         <CardHeader
           title="Automated Insights Stream"
           subtitle="AI-generated findings updated in real-time"
         />
-        <div className="flex items-center gap-3">
-          <FilterTabs />
-          <div className="flex items-center gap-1">
+        <div className="w-full lg:w-auto flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+          <div className="w-full sm:w-auto">
+            <FilterTabs />
+          </div>
+          <div className="flex items-center gap-1 sm:justify-end">
             <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
             <span className="font-poppins text-xs text-text-secondary">Live</span>
           </div>
         </div>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-        <div className="space-y-3">
-          {insights.slice(0, 2).map((insight) => (
-            <InsightCard key={insight.id} {...insight} />
-          ))}
-        </div>
-        <div className="space-y-3">
-          {rightInsights.map((insight) => (
-            <InsightCard key={insight.id} {...insight} />
-          ))}
-        </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 items-stretch">
+        {primaryInsightGrid.map((insight) => (
+          <InsightCard key={insight.id} {...insight} />
+        ))}
       </div>
       <div className="mt-3">
         <InsightCard {...insights[2]} />
