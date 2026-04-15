@@ -41,8 +41,8 @@ const claims = [
 
 function ClaimCard({ claim }) {
   return (
-    <div className="border border-surface-border rounded overflow-hidden">
-      <div className="bg-[#f9f9f9] border-b border-surface-border p-3">
+    <div className="border border-surface-border rounded overflow-hidden min-h-[250px] flex flex-col">
+      <div className="bg-[#f9f9f9] border-b border-surface-border p-3 flex-1">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
             <p className="font-poppins font-semibold text-sm text-text-primary">
@@ -110,7 +110,7 @@ export function UnderpaymentDiscoveryEngine() {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-3">
         {summaryMetrics.map((metric, index) => (
-          <div key={index} className="bg-danger-muted rounded p-3">
+          <div key={index} className="bg-danger-muted rounded p-3 min-h-[110px]">
             <p className="font-poppins text-xs text-primary uppercase">
               {metric.label}
             </p>

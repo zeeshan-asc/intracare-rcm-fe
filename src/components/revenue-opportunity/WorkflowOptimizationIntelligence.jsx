@@ -89,16 +89,16 @@ export function WorkflowOptimizationIntelligence() {
         subtitle="AI-driven recommendations to optimize staffing, routing, and contact timing"
       />
       
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 mt-3">
-        <div className="border border-surface-border rounded-lg p-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 mt-3 items-stretch">
+        <div className="border border-surface-border rounded-lg p-2 flex flex-col">
           <h4 className="font-poppins font-semibold text-sm text-primary mb-2">
             Collector Performance
           </h4>
-          <div className="space-y-2">
+          <div className="space-y-2 flex-1">
             {collectors.map((collector, index) => (
               <div
                 key={index}
-                className={`border border-surface-border rounded-md p-2 ${
+                className={`border border-surface-border rounded-md p-2 h-[124px] flex flex-col ${
                   collector.highlighted ? 'bg-surface-muted' : 'bg-surface'
                 }`}
               >
@@ -118,65 +118,65 @@ export function WorkflowOptimizationIntelligence() {
                     <p className="font-poppins font-semibold text-sm text-text-primary leading-none mt-1">{collector.success}</p>
                   </div>
                 </div>
-                <p className="font-poppins text-xs text-text-secondary leading-tight">
+                <p className="font-poppins text-xs text-text-secondary leading-tight h-8 overflow-hidden">
                   <span className="font-semibold">AI Evidence:</span> {collector.evidence}
                 </p>
               </div>
             ))}
-            <button className="w-full bg-surface-highlight border border-primary rounded-md py-1.5 font-poppins font-semibold text-xs text-primary hover:bg-primary-muted transition-colors cursor-pointer">
-              Optimize Routing
-            </button>
           </div>
+          <button className="w-full bg-surface-highlight border border-primary rounded-md py-1.5 font-poppins font-semibold text-xs text-primary hover:bg-primary-muted transition-colors cursor-pointer mt-2">
+            Optimize Routing
+          </button>
         </div>
         
-        <div className="border border-surface-border rounded-lg p-2">
+        <div className="border border-surface-border rounded-lg p-2 flex flex-col">
           <h4 className="font-poppins font-semibold text-sm text-primary mb-2">
             Channel Performance
           </h4>
-          <div className="space-y-2">
+          <div className="space-y-2 flex-1">
             {channels.map((channel, index) => (
               <div
                 key={index}
-                className={`border border-surface-border rounded-md p-2 ${
+                className={`border border-surface-border rounded-md p-1.5 h-[96px] flex flex-col ${
                   channel.highlighted ? 'bg-surface-muted' : 'bg-surface'
                 }`}
               >
-                <div className="flex items-start justify-between mb-1">
-                  <p className="font-poppins font-semibold text-sm text-primary leading-none">
+                <div className="flex items-start justify-between mb-0.5">
+                  <p className="font-poppins font-semibold text-xs text-primary leading-none">
                     {channel.name}
                   </p>
                   {channel.top && <span className="px-1 py-0.5 rounded text-[10px] font-poppins text-danger bg-danger-light">TOP</span>}
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-1">
+                <div className="grid grid-cols-2 gap-1.5 mb-0.5">
                   <div>
-                    <p className="font-poppins text-xs text-text-secondary leading-none">Conversion</p>
-                    <p className="font-poppins font-semibold text-sm text-text-primary leading-none mt-1">{channel.conversion}</p>
+                    <p className="font-poppins text-[10px] text-text-secondary leading-none">Conversion</p>
+                    <p className="font-poppins font-semibold text-xs text-text-primary leading-none mt-0.5">{channel.conversion}</p>
                   </div>
                   <div>
-                    <p className="font-poppins text-xs text-text-secondary leading-none">Avg Value</p>
-                    <p className="font-poppins font-semibold text-sm text-text-primary leading-none mt-1">{channel.avgValue}</p>
+                    <p className="font-poppins text-[10px] text-text-secondary leading-none">Avg Value</p>
+                    <p className="font-poppins font-semibold text-xs text-text-primary leading-none mt-0.5">{channel.avgValue}</p>
                   </div>
                 </div>
-                <p className="font-poppins text-xs text-text-secondary leading-tight">
+                <p className="font-poppins text-[10px] text-text-secondary leading-tight h-6 overflow-hidden">
                   <span className="font-semibold">AI Evidence:</span> {channel.evidence}
                 </p>
               </div>
             ))}
-            <button className="w-full bg-surface-highlight border border-primary rounded-md py-1.5 font-poppins font-semibold text-xs text-primary hover:bg-primary-muted transition-colors cursor-pointer">
-              Adjust Channels
-            </button>
           </div>
+          <button className="w-full bg-surface-highlight border border-primary rounded-md py-1.5 font-poppins font-semibold text-xs text-primary hover:bg-primary-muted transition-colors cursor-pointer mt-2">
+            Adjust Channels
+          </button>
         </div>
         
-        <div className="border border-surface-border rounded-lg p-2">
+        <div className="border border-surface-border rounded-lg p-2 flex flex-col">
           <h4 className="font-poppins font-semibold text-sm text-primary mb-2">
             Optimal Contact Timing
           </h4>
-          <div className="space-y-2">
+          <div className="space-y-2 flex-1">
             {contactTiming.map((timing, index) => (
               <div
                 key={index}
-                className={`flex items-center justify-between border border-surface-border rounded-md px-3 py-2 ${
+                className={`flex items-center justify-between border border-surface-border rounded-md px-3 py-2 min-h-[68px] ${
                   timing.highlighted ? 'bg-surface-highlight' : 'bg-surface'
                 }`}
               >
