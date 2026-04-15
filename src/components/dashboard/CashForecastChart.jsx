@@ -129,7 +129,7 @@ export function CashForecastChart() {
               dot={false}
             />
 
-            {/* Inflection points */}
+            {/* Orange highlight points */}
             <ReferenceDot
               x={5}
               y={2.6}
@@ -146,23 +146,48 @@ export function CashForecastChart() {
               stroke="#FF7A58"
               strokeWidth={2}
             />
+
+            {/* Annotation connector lines anchored to chart coordinates */}
+            <ReferenceLine
+              segment={[
+                { x: 4, y: 1.85 },
+                { x: 4, y: 2.15 },
+              ]}
+              stroke="#6B7280"
+              strokeWidth={1}
+            />
+            <ReferenceLine
+              segment={[
+                { x: 9, y: 1.45 },
+                { x: 9, y: 1.85 },
+              ]}
+              stroke="#6B7280"
+              strokeWidth={1}
+            />
           </AreaChart>
         </ResponsiveContainer>
 
-        {/* Annotation labels - hidden on mobile, shown on md+ */}
+        {/* Annotation labels + connectors */}
         <div
-          className="hidden md:block absolute font-prompt font-medium text-xs text-text-secondary leading-tight w-[80px] text-center"
-          style={{ top: '15%', left: '32%' }}
+          className="absolute pointer-events-none"
+          style={{ top: '32%', left: '37%', transform: 'translateX(-50%)' }}
         >
-          
-          
+          <p className="font-prompt font-semibold text-[10px] md:text-xs text-text-secondary leading-tight text-center w-[120px] md:w-[170px]">
+            Expected dip driven
+            <br />
+            by payer delays
+          </p>
         </div>
+
         <div
-          className="hidden md:block absolute font-prompt font-medium text-xs text-text-secondary leading-tight w-[100px] text-center"
-          style={{ top: '25%', left: '55%' }}
+          className="absolute pointer-events-none"
+          style={{ top: '12%', left: '71%', transform: 'translateX(-50%)' }}
         >
-          
-          
+          <p className="font-prompt font-semibold text-[10px] md:text-xs text-text-secondary leading-tight text-center w-[135px] md:w-[190px]">
+            Recovery from high-value
+            <br />
+            claims nearing payments
+          </p>
         </div>
       </div>
 
